@@ -42,6 +42,18 @@ const courcesShema = new mongoose.Schema({
     maxLength: [4, "Stock cannot exceed 4 characters"],
     default: 1,
   },
+  about: {
+    type: String,
+    required: [true, "Please Enter about"],
+  },
+  goal: {
+    type: String,
+    required: [true, "Please Enter gaol"],
+  },
+  mission: {
+    type: String,
+    required: [true, "Please Enter mission"],
+  },
   //     numOfReviews: {
   //       type: Number,
   //       default: 0,
