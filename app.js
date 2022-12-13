@@ -2,7 +2,7 @@ const express = require('express');
 const app = express()
 const cors = require('cors')
 app.use(cors({
-      origin: "https://michigansbestgolfdeals.com"
+      origin: "https://golf-b0226.web.app"
 }))
 // const cookieParser = require('cookie-parser')
 const fileUpload = require("express-fileupload");
@@ -39,8 +39,8 @@ app.post("/pay", (req, res) => {
                   payment_method: "paypal",
             },
             redirect_urls: {
-                  return_url: "https://michigansbestgolfdeals.com/myCart/chackout/review/payment/success",
-                  cancel_url: "https://michigansbestgolfdeals.com/cancel",
+                  return_url: "https://golf-b0226.web.app/myCart/chackout/review/payment/success",
+                  cancel_url: "https://golf-b0226.web.app/cancel",
             },
             transactions: [
                   {
