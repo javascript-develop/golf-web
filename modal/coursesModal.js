@@ -54,6 +54,14 @@ const courcesShema = new mongoose.Schema({
     type: String,
     required: [true, "Please Enter mission"],
   },
+  lat: {
+    type: Number,
+    required: [true, "Please Enter course location"],
+  },
+  log: {
+    type: Number,
+    required: [true, "Please Enter course location"],
+  },
   //     numOfReviews: {
   //       type: Number,
   //       default: 0,
