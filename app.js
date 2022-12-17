@@ -2,7 +2,7 @@ const express = require('express');
 const app = express()
 const cors = require('cors')
 app.use(cors({
-      origin: "https://michigansbestgolfdeals.com"
+      origin: "https://golf-b0226.web.app"
 }))
 // const cookieParser = require('cookie-parser')
 const fileUpload = require("express-fileupload");
