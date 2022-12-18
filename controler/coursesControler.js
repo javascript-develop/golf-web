@@ -4,21 +4,90 @@ const cloudinary = require("cloudinary");
 exports.createCourse = async (req, res, next) => {
   try {
     const myCloud = await cloudinary.v2.uploader.upload(req.body.images, {
+      folder: "products",
+      // width: 150,
+      crop: "scale",
+    });
+
+    if (req.body.boxOneImage !== "") {
+      var CloudboxOneImage = await cloudinary.v2.uploader.upload(
+        req.body.boxOneImage,
+        {
           folder: "products",
           // width: 150,
           crop: "scale",
-        });
+        }
+      );
+    }
+    if (req.body.boxTwoImage !== "") {
+      var CloudboxTwoImage = await cloudinary.v2.uploader.upload(
+        req.body.boxTwoImage,
+        {
+          folder: "products",
+          // width: 150,
+          crop: "scale",
+        }
+      );
+    }
+    if (req.body.boxThreeImage !== "") {
+      var CloudboxThreeImage = await cloudinary.v2.uploader.upload(
+        req.body.boxThreeImage,
+        {
+          folder: "products",
+          // width: 150,
+          crop: "scale",
+        }
+      );
+    }
 
-    const { name, description, price, category, courseTitle, Stock, about, goal, mission, log, lat } = req.body;
+    const {
+      name,
+      description,
+      price,
+      category,
+      courseTitle,
+      Stock,
+      about,
+      goal,
+      mission,
+      log,
+      lat,
+      boxOneTitle,
+      boxTwoTitle,
+      boxThreeTitle,
+    } = req.body;
+    console.log(req.body);
     const sendProudcts = await CoursesDB.create({
       name,
       description,
       price,
-      category, courseTitle, Stock, about, goal, mission, log, lat,
+      category,
+      courseTitle,
+      Stock,
+      about,
+      goal,
+      mission,
+      log,
+      lat,
+      boxOneTitle,
+      boxTwoTitle,
+      boxThreeTitle,
       images: {
-        public_id:  myCloud.public_id,
+        public_id: myCloud.public_id,
         url: myCloud.secure_url,
-      }
+      },
+      boxOneImage: {
+        public_id: CloudboxOneImage?.public_id,
+        url: CloudboxOneImage?.secure_url,
+      },
+      boxTwoImage: {
+        public_id: CloudboxTwoImage?.public_id,
+        url: CloudboxTwoImage?.secure_url,
+      },
+      boxThreeImage: {
+        public_id: CloudboxThreeImage?.public_id,
+        url: CloudboxThreeImage?.secure_url,
+      },
     });
     res.status(200).json({
       message: "course Added SuccessFull",
